@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | ○○ & ○○</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-ocean: #03045e;
+            --ocean:      #0077b6;
+            --turquoise:  #00b4d8;
+            --sky:        #90e0ef;
+            --foam:       #e8f6fb;
+            --white:      #ffffff;
+            --gold:       #c9a227;
+            --gold-light: #e8d5a3;
+            --text-dark:  #1a2f4e;
+            --text-mid:   #2c5f7a;
+            --text-light: #6b98b5;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─── */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 620px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg,
+                #03045e 0%,
+                #0077b6 38%,
+                #00b4d8 68%,
+                #90e0ef 100%);
+            overflow: hidden;
+        }
+
+        /* Bubble particles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            animation: bubble-rise linear infinite;
+            pointer-events: none;
+        }
+        @keyframes bubble-rise {
+            0%   { transform: translateY(110vh) scale(0); opacity: 0; }
+            10%  { opacity: .55; }
+            90%  { opacity: .2; }
+            100% { transform: translateY(-80px) scale(1); opacity: 0; }
+        }
+
+        /* Hibiscus corner watermarks */
+        .hibiscus-deco {
+            position: absolute;
+            opacity: .13;
+            pointer-events: none;
+        }
+        .hibiscus-deco.tl { top: 18px;  left: 18px;  width: 130px; transform: rotate(-15deg); }
+        .hibiscus-deco.tr { top: 18px;  right: 18px; width: 130px; transform: rotate(15deg) scaleX(-1); }
+        .hibiscus-deco.bl { bottom: 90px; left: 18px;  width: 100px; transform: rotate(15deg); }
+        .hibiscus-deco.br { bottom: 90px; right: 18px; width: 100px; transform: rotate(-15deg) scaleX(-1); }
+
+        /* Hero content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero-label {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(.75rem, 2vw, .95rem);
+            letter-spacing: .5em;
+            color: var(--foam);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.2rem, 11vw, 7.5rem);
+            color: var(--white);
+            text-shadow: 0 2px 24px rgba(0,180,216,.55);
+            line-height: 1.1;
+        }
+        .hero-and {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.4rem, 4vw, 2.4rem);
+            color: var(--gold-light);
+            margin: 4px 0;
+        }
+        .hero-divider {
+            width: 55px; height: 1px;
+            background: var(--gold);
+            margin: 22px auto;
+        }
+        .hero-date {
+            font-size: clamp(.85rem, 2.2vw, 1.05rem);
+            letter-spacing: .25em;
+            color: var(--foam);
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 105px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,.6);
+            font-size: .65rem;
+            letter-spacing: .3em;
+            animation: hint-bounce 2.2s ease-in-out infinite;
+        }
+        @keyframes hint-bounce {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(9px); }
+        }
+        .scroll-hint svg { opacity: .7; }
+
+        /* Hero wave */
+        .hero-wave { position: absolute; bottom: -2px; left: 0; width: 100%; line-height: 0; }
+
+        /* ─── COMMON SECTION ─── */
+        section { padding: 88px 24px; }
+        .container { max-width: 820px; margin: 0 auto; }
+
+        .sec-en {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.8vw, 1.7rem);
+            letter-spacing: .35em;
+            color: var(--ocean);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .sec-ja {
+            font-size: clamp(.75rem, 1.8vw, .88rem);
+            letter-spacing: .3em;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 44px;
+        }
+        .ornament::before,
+        .ornament::after {
+            content: '';
+            flex: 1;
+            max-width: 100px;
+            height: 1px;
+        }
+        .ornament::before { background: linear-gradient(90deg, transparent, var(--gold)); }
+        .ornament::after  { background: linear-gradient(90deg, var(--gold), transparent); }
+        .ornament-icon { color: var(--gold); font-size: 1rem; }
+
+        /* ─── WAVE DIVIDER ─── */
+        .wave-sep { width: 100%; overflow: hidden; line-height: 0; }
+        .wave-sep svg { display: block; width: 100%; }
+
+        /* ─── GREETING ─── */
+        #greeting { background: var(--white); text-align: center; }
+        .greeting-text {
+            font-size: clamp(.88rem, 2.3vw, 1rem);
+            line-height: 2.6;
+            color: var(--text-dark);
+            font-weight: 300;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .greeting-sign {
+            margin-top: 40px;
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: var(--ocean);
+        }
+
+        /* ─── DETAILS ─── */
+        #details { background: var(--foam); }
+        .detail-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
+        }
+        .detail-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 44px 32px;
+            text-align: center;
+            box-shadow: 0 4px 22px rgba(0,119,182,.1);
+            border-top: 3px solid var(--turquoise);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 32px rgba(0,119,182,.18);
+        }
+        .detail-card-type {
+            font-family: 'Playfair Display', serif;
+            font-size: .75rem;
+            letter-spacing: .35em;
+            color: var(--turquoise);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .detail-card-icon { font-size: 1.8rem; margin-bottom: 14px; }
+        .detail-card h3 {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-dark);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .detail-time {
+            font-size: 2rem;
+            color: var(--ocean);
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        .detail-card p {
+            font-size: .88rem;
+            color: var(--text-mid);
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        /* ─── SCHEDULE ─── */
+        #schedule { background: var(--white); }
+        .timeline {
+            position: relative;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--turquoise), var(--sky));
+            transform: translateX(-50%);
+        }
+        .tl-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 44px;
+            position: relative;
+        }
+        .tl-item:nth-child(odd)  { flex-direction: row-reverse; }
+        .tl-item:nth-child(odd)  .tl-body { text-align: right; padding-right: 38px; padding-left: 0; }
+        .tl-item:nth-child(even) .tl-body { padding-left: 38px; }
+
+        .tl-dot {
+            position: absolute;
+            left: 50%; transform: translateX(-50%);
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            background: var(--turquoise);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--turquoise);
+            z-index: 1;
+            top: 4px;
+        }
+        .tl-body { flex: 1; }
+        .tl-time {
+            font-size: .78rem;
+            letter-spacing: .12em;
+            color: var(--turquoise);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .tl-event {
+            font-size: .95rem;
+            color: var(--text-dark);
+        }
+        .tl-note {
+            font-size: .78rem;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-top: 3px;
+            line-height: 1.8;
+        }
+
+        /* ─── DRESS CODE ─── */
+        #dresscode { background: var(--foam); text-align: center; }
+        .dresscode-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 44px 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 22px rgba(0,119,182,.1);
+        }
+        .dresscode-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ocean), var(--turquoise));
+            color: white;
+            padding: 9px 28px;
+            border-radius: 50px;
+            font-size: .88rem;
+            letter-spacing: .2em;
+            margin-bottom: 22px;
+        }
+        .dresscode-note {
+            font-size: .85rem;
+            color: var(--text-mid);
+            line-height: 2.2;
+            font-weight: 300;
+        }
+
+        /* ─── RSVP ─── */
+        #rsvp {
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--turquoise) 100%);
+            text-align: center;
+            color: white;
+        }
+        #rsvp .sec-en  { color: white; }
+        #rsvp .sec-ja  { color: rgba(255,255,255,.65); }
+        #rsvp .ornament-icon { color: var(--gold-light); }
+        #rsvp .ornament::before { background: linear-gradient(90deg, transparent, var(--gold-light)); }
+        #rsvp .ornament::after  { background: linear-gradient(90deg, var(--gold-light), transparent); }
+
+        .rsvp-inner { max-width: 520px; margin: 0 auto; }
+        .rsvp-box {
+            background: rgba(255,255,255,.15);
+            border-radius: 14px;
+            padding: 28px 36px;
+            margin: 0 0 20px;
+            font-size: .92rem;
+            line-height: 2.2;
+        }
+        .rsvp-box strong { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+        .rsvp-note {
+            font-size: .82rem;
+            opacity: .8;
+            line-height: 2.2;
+            font-weight: 300;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 26px;
+            padding: 15px 44px;
+            background: white;
+            color: var(--ocean);
+            border-radius: 50px;
+            font-family: 'Noto Serif JP', serif;
+            font-size: .92rem;
+            letter-spacing: .2em;
+            text-decoration: none;
+            transition: transform .25s, box-shadow .25s;
+            box-shadow: 0 4px 16px rgba(0,0,0,.2);
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,.3);
+        }
+
+        /* ─── ACCESS ─── */
+        #access { background: var(--white); }
+        .access-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .access-box {
+            background: var(--foam);
+            border-radius: 14px;
+            padding: 32px 28px;
+        }
+        .access-box h3 {
+            font-size: .75rem;
+            letter-spacing: .35em;
+            color: var(--turquoise);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .access-box p {
+            font-size: .88rem;
+            color: var(--text-dark);
+            line-height: 2.2;
+            font-weight: 300;
+        }
+        .map-wrapper {
+            grid-column: 1 / -1;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 14px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--deep-ocean);
+            color: rgba(255,255,255,.65);
+            text-align: center;
+            padding: 70px 24px 50px;
+        }
+        .footer-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            color: white;
+            margin-bottom: 14px;
+        }
+        .footer-date {
+            font-size: .88rem;
+            letter-spacing: .32em;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+        .footer-divider { width: 36px; height: 1px; background: var(--gold); margin: 22px auto; }
+        .footer-contact { font-size: .78rem; line-height: 2.2; font-weight: 300; }
+
+        /* Shisa silhouette at footer */
+        .footer-shisa { margin: 20px 0 6px; opacity: .25; }
+
+        /* ─── FADE-IN ANIMATION ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .85s ease, transform .85s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in.delay-1 { transition-delay: .15s; }
+        .fade-in.delay-2 { transition-delay: .3s; }
+        .fade-in.delay-3 { transition-delay: .45s; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            .timeline::before { left: 18px; }
+            .tl-item           { flex-direction: row !important; padding-left: 46px; }
+            .tl-item:nth-child(odd) .tl-body  { text-align: left; padding-left: 20px; padding-right: 0; }
+            .tl-item:nth-child(even) .tl-body { padding-left: 20px; }
+            .tl-dot { left: 18px; }
+            .access-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+
+    <!-- Hibiscus watermarks (SVG) -->
+    <svg class="hibiscus-deco tl" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <g transform="translate(80,80)">
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="10"/>
+            <line x1="0" y1="-10" x2="0" y2="-26" stroke="white" stroke-width="3"/>
+            <circle cx="0" cy="-29" r="5"/>
+        </g>
+    </svg>
+    <svg class="hibiscus-deco tr" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <g transform="translate(80,80)">
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="10"/>
+            <line x1="0" y1="-10" x2="0" y2="-26" stroke="white" stroke-width="3"/>
+            <circle cx="0" cy="-29" r="5"/>
+        </g>
+    </svg>
+    <svg class="hibiscus-deco bl" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <g transform="translate(80,80)">
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(36)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(108)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(252)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(324)"/>
+            <circle cx="0" cy="0" r="10"/>
+        </g>
+    </svg>
+    <svg class="hibiscus-deco br" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <g transform="translate(80,80)">
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(36)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(108)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(252)"/>
+            <ellipse cx="0" cy="-38" rx="18" ry="38" transform="rotate(324)"/>
+            <circle cx="0" cy="0" r="10"/>
+        </g>
+    </svg>
+
+    <!-- Hero text -->
+    <div class="hero-content">
+        <p class="hero-label">Wedding Invitation</p>
+        <!-- ↓ お二人のお名前に変更してください -->
+        <div class="hero-names">○○ 太郎</div>
+        <div class="hero-and">&amp;</div>
+        <div class="hero-names">○○ 花子</div>
+        <div class="hero-divider"></div>
+        <!-- ↓ 日付に変更してください -->
+        <p class="hero-date">
+            2026年 ○月○日（土）<br>
+            宮古島・伊良部島
+        </p>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+        <span>SCROLL</span>
+        <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="14" height="20" rx="7" stroke="white" stroke-width="1.5"/>
+            <circle cx="8" cy="7" r="2" fill="white">
+                <animate attributeName="cy" values="7;13;7" dur="1.8s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="1;0;1" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+    </div>
+
+    <!-- Bottom wave -->
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 88" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,44 C240,88 480,0 720,44 C960,88 1200,0 1440,44 L1440,88 L0,88 Z" fill="white"/>
+        </svg>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     GREETING
+═══════════════════════════════════════ -->
+<section id="greeting">
+    <div class="container">
+        <p class="sec-en fade-in">Greeting</p>
+        <p class="sec-ja fade-in">ご挨拶</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <!-- ↓ ご挨拶文をご自由に変更してください -->
+        <p class="greeting-text fade-in">
+            謹んでご案内申し上げます。<br>
+            このたび私どもは 結婚することになりました。<br>
+            <br>
+            青い海と空に見守られた宮古島・伊良部島の地で<br>
+            皆様とともに喜びを分かち合えれば幸いです。<br>
+            <br>
+            ご多用中のところ誠に恐れ入りますが<br>
+            ぜひご出席いただけますよう<br>
+            心よりお願い申し上げます。
+        </p>
+        <!-- ↓ お二人の名前に変更してください -->
+        <p class="greeting-sign fade-in" style="margin-top:40px;">○○ 太郎 &amp; ○○ 花子</p>
+    </div>
+</section>
+
+<!-- Wave divider -->
+<div class="wave-sep">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1360,15 1440,30 L1440,60 L0,60 Z" fill="#e8f6fb"/>
+    </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     DETAILS
+═══════════════════════════════════════ -->
+<section id="details">
+    <div class="container">
+        <p class="sec-en fade-in">Details</p>
+        <p class="sec-ja fade-in">挙式・披露宴について</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <div class="detail-cards">
+            <!-- Ceremony -->
+            <div class="detail-card fade-in delay-1">
+                <p class="detail-card-type">Ceremony</p>
+                <div class="detail-card-icon">🌊</div>
+                <h3>挙式</h3>
+                <p class="detail-time">12:00</p>
+                <p>
+                    サントリーニ ホテル＆ヴィラズ 宮古島<br>
+                    〒906-0502<br>
+                    沖縄県宮古島市伊良部字<br>
+                    池間添長山1052番1
+                </p>
+            </div>
+
+            <!-- Reception -->
+            <div class="detail-card fade-in delay-2">
+                <p class="detail-card-type">Reception</p>
+                <div class="detail-card-icon">🐚</div>
+                <h3>披露宴</h3>
+                <p class="detail-time">13:30</p>
+                <p>
+                    サントリーニ ホテル＆ヴィラズ 宮古島<br>
+                    〒906-0502<br>
+                    沖縄県宮古島市伊良部字<br>
+                    池間添長山1052番1
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wave divider -->
+<div class="wave-sep" style="background:#e8f6fb;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 C360,60 720,0 1080,30 C1260,45 1360,10 1440,0 L1440,60 L0,60 Z" fill="white"/>
+    </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SCHEDULE
+═══════════════════════════════════════ -->
+<section id="schedule">
+    <div class="container">
+        <p class="sec-en fade-in">Schedule</p>
+        <p class="sec-ja fade-in">当日のスケジュール</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <div class="timeline">
+            <!-- ↓ スケジュールを変更してください -->
+            <div class="tl-item fade-in">
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                    <p class="tl-time">11:30</p>
+                    <p class="tl-event">受付開始</p>
+                    <p class="tl-note">開始時刻の30分前よりご案内いたします</p>
+                </div>
+            </div>
+            <div class="tl-item fade-in">
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                    <p class="tl-time">12:00</p>
+                    <p class="tl-event">挙式</p>
+                    <p class="tl-note">サントリーニ ホテル＆ヴィラズ 宮古島にて</p>
+                </div>
+            </div>
+            <div class="tl-item fade-in">
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                    <p class="tl-time">12:45</p>
+                    <p class="tl-event">記念撮影・フラワーシャワー</p>
+                    <p class="tl-note">チャペル前のテラスにて</p>
+                </div>
+            </div>
+            <div class="tl-item fade-in">
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                    <p class="tl-time">13:30</p>
+                    <p class="tl-event">披露宴</p>
+                    <p class="tl-note">海を望むバンケットにて</p>
+                </div>
+            </div>
+            <div class="tl-item fade-in">
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                    <p class="tl-time">16:30</p>
+                    <p class="tl-event">お開き</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wave divider -->
+<div class="wave-sep">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,0 720,60 1080,30 C1260,15 1360,45 1440,30 L1440,60 L0,60 Z" fill="#e8f6fb"/>
+    </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     DRESS CODE
+═══════════════════════════════════════ -->
+<section id="dresscode">
+    <div class="container">
+        <p class="sec-en fade-in">Dress Code</p>
+        <p class="sec-ja fade-in">服装について</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <div class="dresscode-card fade-in">
+            <div class="dresscode-badge">平服でお越しください</div>
+            <p class="dresscode-note">
+                カジュアルすぎないスマートカジュアルでご参加ください。<br>
+                <br>
+                沖縄の気候を考慮し、快適な服装でお越しいただければ幸いです。<br>
+                かりゆしウェア・アロハシャツも大歓迎です 🌺<br>
+                <br>
+                ヒールの高い靴は式場の芝生エリアに<br>
+                お入りいただけない場合がございますのでご注意ください。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Wave divider -->
+<div class="wave-sep" style="background:#e8f6fb;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 C240,60 480,0 720,40 C960,60 1200,10 1440,20 L1440,60 L0,60 Z" fill="#0077b6"/>
+    </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     RSVP
+═══════════════════════════════════════ -->
+<section id="rsvp">
+    <div class="container">
+        <p class="sec-en fade-in">RSVP</p>
+        <p class="sec-ja fade-in">ご出席のご返信</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <div class="rsvp-inner fade-in">
+            <div class="rsvp-box">
+                <!-- ↓ 返信期限を変更してください -->
+                <strong>○月○日（○）まで</strong>
+                ご出席のお返事をいただけますと幸いです。
+            </div>
+            <p class="rsvp-note">
+                ご出席の可否・お名前・ご連絡先・アレルギー等を<br>
+                下記のフォームよりご入力ください。<br>
+                <br>
+                ご不明な点はお気軽にご連絡ください。
+            </p>
+            <!-- ↓ href にフォームURLを設定してください（Google フォームなど） -->
+            <a href="#" class="btn">ご返信フォームはこちら</a>
+        </div>
+    </div>
+</section>
+
+<!-- Wave divider -->
+<div class="wave-sep" style="background:#0077b6;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 C360,60 720,0 1080,40 C1260,55 1360,20 1440,30 L1440,60 L0,60 Z" fill="white"/>
+    </svg>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     ACCESS
+═══════════════════════════════════════ -->
+<section id="access">
+    <div class="container">
+        <p class="sec-en fade-in">Access</p>
+        <p class="sec-ja fade-in">アクセス</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <div class="access-grid">
+            <div class="access-box fade-in delay-1">
+                <h3>Venue</h3>
+                <p>
+                    サントリーニ ホテル＆ヴィラズ 宮古島<br>
+                    〒906-0502<br>
+                    沖縄県宮古島市伊良部字<br>
+                    池間添長山1052番1<br>
+                    TEL: 0980-79-6541
+                </p>
+            </div>
+            <div class="access-box fade-in delay-2">
+                <h3>Transportation</h3>
+                <p>
+                    宮古空港より車で約19分<br>
+                    下地島空港より車で約12分<br>
+                    伊良部大橋を渡ってすぐ<br>
+                    <br>
+                    無料駐車場あり（29台）<br>
+                    ※レンタカーのご利用をお勧めします
+                </p>
+            </div>
+            <div class="map-wrapper fade-in">
+                <iframe
+                    src="https://maps.google.com/maps?q=24.8242343496881,125.20927064446083&z=15&hl=ja&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+    <!-- Shisa silhouette (simplified SVG) -->
+    <div class="footer-shisa">
+        <svg width="80" height="60" viewBox="0 0 80 60" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body -->
+            <ellipse cx="40" cy="40" rx="20" ry="16"/>
+            <!-- Head -->
+            <circle cx="40" cy="18" r="13"/>
+            <!-- Ears -->
+            <polygon points="28,10 23,2 33,8"/>
+            <polygon points="52,10 57,2 47,8"/>
+            <!-- Mane hints -->
+            <path d="M28,18 Q24,22 26,28" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M52,18 Q56,22 54,28" stroke="white" stroke-width="2" fill="none"/>
+            <!-- Eyes -->
+            <circle cx="35" cy="16" r="2.5" fill="#0077b6"/>
+            <circle cx="45" cy="16" r="2.5" fill="#0077b6"/>
+            <!-- Nose -->
+            <ellipse cx="40" cy="21" rx="3" ry="2" fill="#0077b6"/>
+            <!-- Tail -->
+            <path d="M58,38 Q68,30 65,46 Q60,50 58,44" fill="white"/>
+        </svg>
+    </div>
+
+    <!-- ↓ お二人のお名前・日付に変更してください -->
+    <p class="footer-names">○○ 太郎 &amp; ○○ 花子</p>
+    <p class="footer-date">2026年 ○月○日（土） 宮古島・伊良部島</p>
+    <div class="footer-divider"></div>
+    <p class="footer-contact">
+        <!-- ↓ 連絡先に変更してください -->
+        お問い合わせ：○○○○@example.com<br>
+        幹事：○○ ○○（Tel: 090-xxxx-xxxx）
+    </p>
+</footer>
+
+
+<script>
+(function () {
+    // ── Bubble particles ──────────────────────────────────
+    const hero = document.getElementById('hero');
+    const COUNT = 22;
+    for (let i = 0; i < COUNT; i++) {
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        const size = Math.random() * 28 + 8;
+        b.style.cssText = `
+            width:${size}px; height:${size}px;
+            left:${Math.random()*100}%;
+            animation-duration:${Math.random()*14+10}s;
+            animation-delay:${Math.random()*14}s;
+        `;
+        hero.appendChild(b);
+    }
+
+    // ── Intersection Observer – fade-in ───────────────────
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>

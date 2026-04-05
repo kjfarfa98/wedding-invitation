@@ -110,6 +110,22 @@
             letter-spacing: .3em;
             font-weight: 300;
             text-shadow: 0 1px 10px rgba(0,180,216,.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-names-ja .name-left {
+            flex: 1;
+            text-align: right;
+        }
+        .hero-names-ja .name-sep {
+            flex: none;
+            padding: 0 0.6em;
+            letter-spacing: 0;
+        }
+        .hero-names-ja .name-right {
+            flex: 1;
+            text-align: left;
         }
         .hero-divider {
             width: 55px; height: 1px;
@@ -535,9 +551,9 @@
     <div class="hero-content">
         <p class="hero-label">Wedding Invitation</p>
         <p class="hero-date-large">2027.3.20</p>
-        <p class="hero-date">SAT &nbsp;|&nbsp; 宮古島・伊良部島</p>
+        <p class="hero-date">SAT &nbsp;|&nbsp; 沖縄 宮古</p>
         <div class="hero-divider"></div>
-        <p class="hero-names-ja">紺屋 純　✦　豊田 紗来</p>
+        <p class="hero-names-ja"><span class="name-left">紺屋 純</span><span class="name-sep">✦</span><span class="name-right">豊田 紗来</span></p>
     </div>
 
     <!-- Scroll hint -->
@@ -572,15 +588,15 @@
 
         <!-- ↓ ご挨拶文をご自由に変更してください -->
         <p class="greeting-text fade-in">
-            謹んでご案内申し上げます。<br>
-            このたび私どもは 結婚することになりました。<br>
+            謹んでご案内申し上げます<br>
+            このたび私どもは結婚することになりました<br>
             <br>
-            青い海と空に見守られた宮古島・伊良部島の地で<br>
-            皆様とともに喜びを分かち合えれば幸いです。<br>
+            青い海と空に見守られた沖縄 宮古の地で<br>
+            皆様とともに喜びを分かち合えれば幸いです<br>
             <br>
             ご多用中のところ誠に恐れ入りますが<br>
             ぜひご出席いただけますよう<br>
-            心よりお願い申し上げます。
+            心よりお願い申し上げます
         </p>
         <p class="greeting-sign fade-in" style="margin-top:40px;">紺屋 純　&amp;　豊田 紗来</p>
     </div>
@@ -603,32 +619,26 @@
         <p class="sec-ja fade-in">挙式・披露宴について</p>
         <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
 
-        <div class="detail-cards">
-            <!-- Ceremony -->
-            <div class="detail-card fade-in delay-1">
-                <p class="detail-card-type">Ceremony</p>
+        <div class="detail-cards" style="max-width:440px; margin:0 auto;">
+            <div class="detail-card fade-in" style="grid-column:1/-1;">
+                <p class="detail-card-type">Ceremony &amp; Reception</p>
                 <div class="detail-card-icon">🌊</div>
-                <h3>挙式</h3>
-                <p class="detail-time">12:00</p>
+                <h3>挙式・披露宴</h3>
+                <div style="display:flex; justify-content:center; gap:32px; margin:12px 0 18px;">
+                    <div>
+                        <p style="font-size:.75rem; letter-spacing:.2em; color:var(--turquoise); margin-bottom:4px;">CEREMONY</p>
+                        <p class="detail-time" style="font-size:1.6rem;">12:00</p>
+                    </div>
+                    <div style="width:1px; background:var(--foam);"></div>
+                    <div>
+                        <p style="font-size:.75rem; letter-spacing:.2em; color:var(--turquoise); margin-bottom:4px;">RECEPTION</p>
+                        <p class="detail-time" style="font-size:1.6rem;">13:30</p>
+                    </div>
+                </div>
                 <p>
                     サントリーニ ホテル＆ヴィラズ 宮古島<br>
                     〒906-0502<br>
-                    沖縄県宮古島市伊良部字<br>
-                    池間添長山1052番1
-                </p>
-            </div>
-
-            <!-- Reception -->
-            <div class="detail-card fade-in delay-2">
-                <p class="detail-card-type">Reception</p>
-                <div class="detail-card-icon">🐚</div>
-                <h3>披露宴</h3>
-                <p class="detail-time">13:30</p>
-                <p>
-                    サントリーニ ホテル＆ヴィラズ 宮古島<br>
-                    〒906-0502<br>
-                    沖縄県宮古島市伊良部字<br>
-                    池間添長山1052番1
+                    沖縄県宮古島市伊良部字池間添長山1052番1
                 </p>
             </div>
         </div>
@@ -717,13 +727,13 @@
         <div class="dresscode-card fade-in">
             <div class="dresscode-badge">平服でお越しください</div>
             <p class="dresscode-note">
-                カジュアルすぎないスマートカジュアルでご参加ください。<br>
+                カジュアルすぎないスマートカジュアルでご参加ください<br>
                 <br>
-                沖縄の気候を考慮し、快適な服装でお越しいただければ幸いです。<br>
+                宮古の気候を考慮し快適な服装でお越しいただければ幸いです<br>
                 かりゆしウェア・アロハシャツも大歓迎です 🌺<br>
                 <br>
                 ヒールの高い靴は式場の芝生エリアに<br>
-                お入りいただけない場合がございますのでご注意ください。
+                お入りいただけない場合がございますのでご注意ください
             </p>
         </div>
     </div>
@@ -750,13 +760,13 @@
             <div class="rsvp-box">
                 <!-- ↓ 返信期限を変更してください -->
                 <strong>2026年6月30日（火）まで</strong>
-                ご出席のお返事をいただけますと幸いです。
+                ご出席のお返事をいただけますと幸いです
             </div>
             <p class="rsvp-note">
                 ご出席の可否・お名前・ご連絡先・アレルギー等を<br>
-                下記のフォームよりご入力ください。<br>
+                下記のフォームよりご入力ください<br>
                 <br>
-                ご不明な点はお気軽にご連絡ください。
+                ご不明な点はお気軽にご連絡ください
             </p>
             <!-- ↓ href にフォームURLを設定してください（Google フォームなど） -->
             <a href="#" class="btn">ご返信フォームはこちら</a>
@@ -843,8 +853,8 @@
         </svg>
     </div>
 
-    <p class="footer-names">Jun &amp; Saku</p>
-    <p class="footer-date">2027.3.20 SAT &nbsp;|&nbsp; 宮古島・伊良部島</p>
+    <p class="footer-names">Jun &amp; Saki</p>
+    <p class="footer-date">2027.3.20 SAT &nbsp;|&nbsp; 沖縄 宮古</p>
     <div class="footer-divider"></div>
     <p class="footer-contact">
         <!-- ↓ 連絡先に変更してください -->

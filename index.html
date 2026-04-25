@@ -39,7 +39,7 @@
         font-family: "Noto Serif JP", serif;
         color: var(--text-dark);
         background: var(--white);
-        overflow-x: hidden;
+        overflow-x: clip;
       }
 
       /* ─── HERO ─── */
@@ -538,9 +538,10 @@
         inset: 0;
         background: rgba(3, 4, 94, 0.55);
         z-index: 1000;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
-        padding: 24px;
+        padding: 40px 24px 40px;
+        overflow-y: auto;
       }
       .modal-box {
         background: white;
@@ -550,6 +551,8 @@
         width: 100%;
         position: relative;
         box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+        margin: auto;
+        margin-bottom: 40px;
       }
       .modal-close {
         position: absolute;
@@ -603,6 +606,27 @@
         font-size: 0.78rem;
         color: var(--turquoise);
         letter-spacing: 0.08em;
+      }
+      .flight-leg {
+        margin-top: 14px;
+      }
+      .flight-leg-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        color: var(--turquoise);
+        margin-bottom: 6px;
+      }
+      .flight-leg-detail {
+        font-size: 0.88rem;
+        color: var(--text-dark);
+        line-height: 1.9;
+        font-weight: 300;
+      }
+      .flight-transfer {
+        margin: 10px 0 0;
+        font-size: 0.75rem;
+        color: var(--text-light);
+        letter-spacing: 0.1em;
       }
 
       /* ─── RSVP ─── */
@@ -1150,23 +1174,78 @@
           ✕
         </button>
         <p class="modal-title">✈ 飛行機でのアクセス</p>
-        WIP
-        <!-- <div class="modal-cards">
-          <div class="modal-card">
-            <p class="modal-airport">宮古空港（MYJ）</p>
-            <p class="modal-routes">
-              羽田 / 成田 / 那覇<br />などから直行便あり
-            </p>
-            <p class="modal-time">会場まで車で約19分</p>
+        <p
+          style="
+            font-size: 0.78rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.8;
+          "
+        >
+          当日入りされる方へのおすすめ便です<br />
+          ※ 料金は時期により変動します
+        </p>
+        <div class="modal-cards">
+          <!-- 大阪：直行便 -->
+          <div class="modal-card" style="grid-column: 1 / -1">
+            <p class="modal-airport">大阪発</p>
+            <div class="flight-leg">
+              <p class="flight-leg-label">関西空港 → 宮古　直行便</p>
+              <p class="flight-leg-detail">JTA 121&emsp;07:40 → 10:20</p>
+            </div>
           </div>
-          <div class="modal-card">
-            <p class="modal-airport">下地島空港（SDS）</p>
-            <p class="modal-routes">
-              成田 / 神戸 / 大阪（関西）<br />から直行便あり
-            </p>
-            <p class="modal-time">会場まで車で約12分</p>
+
+          <!-- 東京 -->
+          <div class="modal-card" style="grid-column: 1 / -1">
+            <p class="modal-airport">東京発</p>
+            <div class="flight-leg">
+              <p class="flight-leg-label">① 羽田 → 那覇</p>
+              <p class="flight-leg-detail">JAL 901&emsp;06:20 → 09:10</p>
+              <p class="flight-leg-detail">JAL 903&emsp;07:20 → 10:10</p>
+            </div>
+            <div class="flight-transfer">↓ 乗り継ぎ</div>
+            <div class="flight-leg">
+              <p class="flight-leg-label">② 那覇 → 宮古　共通</p>
+              <p class="flight-leg-detail">JTA 557&emsp;10:40 → 11:30</p>
+            </div>
           </div>
-        </div> -->
+
+          <!-- 福岡 -->
+          <div class="modal-card" style="grid-column: 1 / -1">
+            <p class="modal-airport">福岡発</p>
+            <div class="flight-leg">
+              <p class="flight-leg-label">① 福岡 → 那覇</p>
+              <p class="flight-leg-detail">JTA 051&emsp;07:15 → 09:00</p>
+            </div>
+            <div class="flight-transfer">↓ 乗り継ぎ</div>
+            <div class="flight-leg">
+              <p class="flight-leg-label">② 那覇 → 宮古</p>
+              <p class="flight-leg-detail">JTA 557&emsp;10:40 → 11:30</p>
+            </div>
+          </div>
+
+          <!-- 名古屋 -->
+          <div class="modal-card" style="grid-column: 1 / -1">
+            <p class="modal-airport">名古屋発</p>
+            <div class="flight-leg">
+              <p class="flight-leg-label">① 名古屋（中部） → 那覇</p>
+              <p class="flight-leg-detail">JTA 043&emsp;07:30 → 10:00</p>
+            </div>
+            <div class="flight-transfer">↓ 乗り継ぎ</div>
+            <div class="flight-leg">
+              <p class="flight-leg-label">② 那覇 → 宮古</p>
+              <p class="flight-leg-detail">JTA 557&emsp;10:40 → 11:30</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:24px;">
+          <a href="https://www.jal.co.jp/jp/ja/dom/" target="_blank" rel="noopener" style="font-size:0.82rem; color:var(--ocean); text-decoration:underline;">JAL 国内線予約サイト →</a>
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-light); text-align:center; margin-top:20px; line-height:2;">
+          朝が早くて空港に間に合わないなど<br />交通面で気になることがあればお気軽にご相談ください
+        </p>
       </div>
     </div>
 
@@ -1196,15 +1275,13 @@
         <div class="rsvp-inner fade-in">
           <div class="rsvp-box">
             <strong>2026年5月31日（日）まで</strong>
-            ご出席のお返事をいただけますと幸いです
+            ご都合の程をご一報賜りますよう<br />
+            お願い申し上げます
+            <p class="rsvp-note">
+              ※ 期限を過ぎてしまう場合はお気軽にご相談ください
+            </p>
           </div>
-          <p class="rsvp-note">
-            ご出席の可否・お名前・ご連絡先・アレルギー等に加え<br />
-            かりゆしウェアのデザインとサイズを<br />
-            下記のフォームよりご入力ください<br />
-            <br />
-            期限を過ぎてしまう場合はお気軽にご相談ください
-          </p>
+
           <button
             class="btn-kariyushi"
             onclick="
@@ -1326,10 +1403,18 @@
           const hours = Math.floor((diff % 86400000) / 3600000);
           const mins = Math.floor((diff % 3600000) / 60000);
           const secs = Math.floor((diff % 60000) / 1000);
-          document.getElementById("cd-days").textContent = String(days).padStart(3, "0");
-          document.getElementById("cd-hours").textContent = String(hours).padStart(2, "0");
-          document.getElementById("cd-mins").textContent = String(mins).padStart(2, "0");
-          document.getElementById("cd-secs").textContent = String(secs).padStart(2, "0");
+          document.getElementById("cd-days").textContent = String(
+            days,
+          ).padStart(3, "0");
+          document.getElementById("cd-hours").textContent = String(
+            hours,
+          ).padStart(2, "0");
+          document.getElementById("cd-mins").textContent = String(
+            mins,
+          ).padStart(2, "0");
+          document.getElementById("cd-secs").textContent = String(
+            secs,
+          ).padStart(2, "0");
         }
         updateCountdown();
         setInterval(updateCountdown, 1000);

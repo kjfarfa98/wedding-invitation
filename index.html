@@ -178,6 +178,43 @@
         line-height: 2;
       }
 
+      /* Countdown */
+      .hero-countdown {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+        margin-top: 28px;
+      }
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 64px;
+      }
+      .countdown-num {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 5.5vw, 3rem);
+        color: var(--white);
+        line-height: 1;
+        letter-spacing: 0.03em;
+      }
+      .countdown-label {
+        font-size: clamp(0.55rem, 1.3vw, 0.65rem);
+        letter-spacing: 0.3em;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: 6px;
+        text-transform: uppercase;
+      }
+      .countdown-sep {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.4rem, 4vw, 2.2rem);
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1;
+        padding: 0 4px;
+        margin-top: 2px;
+      }
+
       /* Scroll indicator */
       .scroll-hint {
         position: absolute;
@@ -653,7 +690,9 @@
         font-size: 0.85rem;
         letter-spacing: 0.15em;
         cursor: pointer;
-        transition: background 0.25s, border-color 0.25s;
+        transition:
+          background 0.25s,
+          border-color 0.25s;
       }
       .btn-kariyushi:hover {
         background: rgba(255, 255, 255, 0.15);
@@ -905,6 +944,27 @@
           <span class="name-left">Jun</span><span class="name-sep">✦</span
           ><span class="name-right">Saki</span>
         </p>
+        <div class="hero-countdown">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">---</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">--</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-mins">--</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-secs">--</span>
+            <span class="countdown-label">Secs</span>
+          </div>
+        </div>
       </div>
 
       <!-- Scroll hint -->
@@ -972,12 +1032,11 @@
           謹んでご案内申し上げます<br />
           このたび私たちは結婚することになりました<br />
           <br />
-          青い海と空に見守られた沖縄 宮古の地で<br />
+          青い海と空に見守られた宮古島の地で<br />
           皆様とともに喜びを分かち合えれば幸いです<br />
           <br />
           ご多用中のところ誠に恐れ入りますが<br />
-          ぜひご出席いただけますよう<br />
-          心よりお願い申し上げます
+          ぜひご出席いただきたくご案内申し上げます
         </p>
       </div>
     </section>
@@ -1013,23 +1072,19 @@
           </div>
           <div class="info-row">
             <span class="info-label">受付</span>
-            <span class="info-value">12:30〜</span>
+            <span class="info-value">13:30〜　※挙式確認中</span>
           </div>
           <div class="info-row">
             <span class="info-label">挙式</span>
-            <span class="info-value">13:00〜</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">記念撮影</span>
-            <span class="info-value">13:45〜</span>
+            <span class="info-value">14:00〜</span>
           </div>
           <div class="info-row">
             <span class="info-label">パーティ</span>
-            <span class="info-value">14:30〜</span>
+            <span class="info-value">16:00〜</span>
           </div>
           <div class="info-row">
             <span class="info-label">お開き</span>
-            <span class="info-value">16:30</span>
+            <span class="info-value">18:00</span>
           </div>
           <div class="info-row">
             <span class="info-label">会場</span>
@@ -1140,7 +1195,7 @@
 
         <div class="rsvp-inner fade-in">
           <div class="rsvp-box">
-            <strong>2026年6月30日（火）まで</strong>
+            <strong>2026年5月31日（日）まで</strong>
             ご出席のお返事をいただけますと幸いです
           </div>
           <p class="rsvp-note">
@@ -1148,11 +1203,13 @@
             かりゆしウェアのデザインとサイズを<br />
             下記のフォームよりご入力ください<br />
             <br />
-            ご不明な点はお気軽にご連絡ください
+            期限を過ぎてしまう場合はお気軽にご相談ください
           </p>
           <button
             class="btn-kariyushi"
-            onclick="document.getElementById('kariyushi-modal').style.display='flex'"
+            onclick="
+              document.getElementById('kariyushi-modal').style.display = 'flex'
+            "
           >
             🌺 かりゆしウェアのデザインを見る
           </button>
@@ -1171,13 +1228,17 @@
     <div
       id="kariyushi-modal"
       class="modal-overlay"
-      onclick="if(event.target===this)this.style.display='none'"
+      onclick="if (event.target === this) this.style.display = 'none';"
     >
       <div class="modal-box">
         <button
           class="modal-close"
-          onclick="document.getElementById('kariyushi-modal').style.display='none'"
-        >✕</button>
+          onclick="
+            document.getElementById('kariyushi-modal').style.display = 'none'
+          "
+        >
+          ✕
+        </button>
         <p class="modal-title">🌺 かりゆしウェアの選択</p>
 
         <p class="ky-section-label">デザイン</p>
@@ -1249,8 +1310,30 @@
         document
           .querySelectorAll(".fade-in")
           .forEach((el) => observer.observe(el));
-      })();
 
+        // ── Countdown timer ───────────────────────────────────
+        const target = new Date("2027-03-20T14:00:00+09:00").getTime();
+        function updateCountdown() {
+          const now = Date.now();
+          const diff = target - now;
+          if (diff <= 0) {
+            ["cd-days", "cd-hours", "cd-mins", "cd-secs"].forEach(
+              (id) => (document.getElementById(id).textContent = "00"),
+            );
+            return;
+          }
+          const days = Math.floor(diff / 86400000);
+          const hours = Math.floor((diff % 86400000) / 3600000);
+          const mins = Math.floor((diff % 3600000) / 60000);
+          const secs = Math.floor((diff % 60000) / 1000);
+          document.getElementById("cd-days").textContent = String(days).padStart(3, "0");
+          document.getElementById("cd-hours").textContent = String(hours).padStart(2, "0");
+          document.getElementById("cd-mins").textContent = String(mins).padStart(2, "0");
+          document.getElementById("cd-secs").textContent = String(secs).padStart(2, "0");
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      })();
     </script>
   </body>
 </html>

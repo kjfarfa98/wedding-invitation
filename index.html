@@ -840,6 +840,69 @@
         transition-delay: 0.45s;
       }
 
+      /* ─── PROFILE ─── */
+      #profile {
+        background: var(--white);
+        padding-top: 0;
+      }
+      .profile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .profile-card {
+        text-align: center;
+      }
+      .profile-photo-wrap {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--gold-light);
+        box-shadow: 0 4px 24px rgba(0, 119, 182, 0.15);
+      }
+      .profile-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+      .profile-role {
+        font-size: 0.88rem;
+        letter-spacing: 0.28em;
+        color: var(--turquoise);
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .profile-name-en {
+        font-size: 1.4rem;
+        color: var(--ocean);
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+      .profile-name-ja {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        color: var(--text-light);
+        margin-bottom: 16px;
+      }
+      .profile-comment {
+        font-size: 0.7rem;
+        color: var(--text-dark);
+        line-height: 2.1;
+        font-weight: 300;
+      }
+      @media (max-width: 500px) {
+        .profile-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+          max-width: 280px;
+        }
+      }
+
       /* ─── RESPONSIVE ─── */
       @media (max-width: 640px) {
         .timeline::before {
@@ -1062,6 +1125,44 @@
           ご多用中のところ誠に恐れ入りますが<br />
           ぜひご出席いただきたくご案内申し上げます
         </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+     PROFILE
+═══════════════════════════════════════ -->
+    <section id="profile">
+      <div class="container">
+        <p class="sec-en fade-in">Profile</p>
+        <p class="sec-ja fade-in">新郎新婦より</p>
+        <div class="ornament fade-in"><span class="ornament-icon">✦</span></div>
+
+        <div class="profile-grid">
+          <div class="profile-card fade-in">
+            <div class="profile-photo-wrap">
+              <img src="groom.png" alt="Groom Jun" />
+            </div>
+            <p class="profile-role">Groom</p>
+            <p class="profile-name-en">Jun</p>
+            <p class="profile-comment">
+              1995年9月8日 徳島出身<br />
+              色々なレースに出場するのが好きです<br />
+              美味しい食事とお酒を用意してお待ちしております！
+            </p>
+          </div>
+          <div class="profile-card fade-in delay-1">
+            <div class="profile-photo-wrap">
+              <img src="bride.png" alt="Bride Saki" />
+            </div>
+            <p class="profile-role">Bride</p>
+            <p class="profile-name-en">Saki</p>
+            <p class="profile-comment">
+              1998年8月7日 大阪出身<br />
+              クマのぬいぐるみ（ふぁーふぁ）がだいすきです<br />
+              皆さまにお会いできることを楽しみにしています！
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -678,6 +678,14 @@
         line-height: 2.2;
         font-weight: 300;
       }
+      .info-tentative-note {
+        margin-top: 28px;
+        font-size: 0.78rem;
+        color: var(--text-light);
+        text-align: center;
+        line-height: 2;
+        font-weight: 300;
+      }
       .btn {
         display: inline-block;
         margin-top: 26px;
@@ -699,81 +707,6 @@
       .btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
-      }
-
-      /* ─── KARIYUSHI MODAL ─── */
-      .btn-kariyushi {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 11px 32px;
-        background: transparent;
-        color: white;
-        border: 1.5px solid rgba(255, 255, 255, 0.6);
-        border-radius: 50px;
-        font-family: "Noto Serif JP", serif;
-        font-size: 0.85rem;
-        letter-spacing: 0.15em;
-        cursor: pointer;
-        transition:
-          background 0.25s,
-          border-color 0.25s;
-      }
-      .btn-kariyushi:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: white;
-      }
-      .ky-section-label {
-        font-size: 0.72rem;
-        letter-spacing: 0.22em;
-        color: var(--text-light);
-        text-align: left;
-        margin: 22px 0 10px;
-        text-transform: uppercase;
-      }
-      .design-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 10px;
-      }
-      .design-card {
-        border: 1px solid var(--foam);
-        border-radius: 10px;
-        padding: 14px 10px;
-        text-align: center;
-        background: var(--foam);
-      }
-      .design-card-name {
-        font-size: 0.85rem;
-        color: var(--text-dark);
-        display: block;
-        margin-bottom: 4px;
-        font-weight: 400;
-      }
-      .design-card-desc {
-        font-size: 0.72rem;
-        color: var(--text-light);
-        display: block;
-        line-height: 1.6;
-      }
-      .size-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .size-chip {
-        padding: 6px 16px;
-        border: 1px solid var(--sky);
-        border-radius: 6px;
-        font-size: 0.85rem;
-        color: var(--text-mid);
-        background: var(--foam);
-      }
-      .ky-modal-note {
-        margin-top: 24px;
-        font-size: 0.78rem;
-        color: var(--text-light);
-        text-align: center;
-        line-height: 1.9;
       }
 
       /* ─── ACCESS ─── */
@@ -1197,7 +1130,7 @@
           </div>
           <div class="info-row">
             <span class="info-label">受付</span>
-            <span class="info-value">13:30〜　※式場確認中</span>
+            <span class="info-value">13:30〜</span>
           </div>
           <div class="info-row">
             <span class="info-label">挙式</span>
@@ -1228,10 +1161,14 @@
           <div class="info-row">
             <span class="info-label">服装</span>
             <span class="info-value"
-              >かりゆしウェア（事前にデザイン・サイズをお伺いしたものを新郎新婦でご用意します）</span
+              >かりゆしウェア を想定<br/>（詳細は追ってご連絡いたします）</span
             >
           </div>
           <div class="info-frame bottom"></div>
+          <p class="info-tentative-note">
+            ※ 日程・服装等の情報は現時点のものです<br />
+            変更等あり次第 随時ご連絡いたします
+          </p>
         </div>
 
         <div
@@ -1403,14 +1340,6 @@
             </p>
           </div>
 
-          <button
-            class="btn-kariyushi"
-            onclick="
-              document.getElementById('kariyushi-modal').style.display = 'flex'
-            "
-          >
-            🌺 かりゆしウェアのデザインを見る
-          </button>
           <a
             href="https://forms.gle/Lqibqcm7F5NHbpa87"
             class="btn"
@@ -1421,58 +1350,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Kariyushi modal -->
-    <div
-      id="kariyushi-modal"
-      class="modal-overlay"
-      onclick="if (event.target === this) this.style.display = 'none';"
-    >
-      <div class="modal-box">
-        <button
-          class="modal-close"
-          onclick="
-            document.getElementById('kariyushi-modal').style.display = 'none'
-          "
-        >
-          ✕
-        </button>
-        <p class="modal-title">🌺 かりゆしウェアの選択</p>
-
-        <p class="ky-section-label">デザイン</p>
-        <div class="design-grid">
-          <!-- ↓ 実際のデザイン情報をここに追記 -->
-          <div class="design-card">
-            <span class="design-card-name">デザイン①</span>
-            <span class="design-card-desc">（説明を記入）</span>
-          </div>
-          <div class="design-card">
-            <span class="design-card-name">デザイン②</span>
-            <span class="design-card-desc">（説明を記入）</span>
-          </div>
-          <div class="design-card">
-            <span class="design-card-name">デザイン③</span>
-            <span class="design-card-desc">（説明を記入）</span>
-          </div>
-        </div>
-
-        <p class="ky-section-label">サイズ</p>
-        <div class="size-chips">
-          <!-- ↓ 用意するサイズをここに追記 -->
-          <span class="size-chip">SS</span>
-          <span class="size-chip">S</span>
-          <span class="size-chip">M</span>
-          <span class="size-chip">L</span>
-          <span class="size-chip">LL</span>
-          <span class="size-chip">3L</span>
-        </div>
-
-        <p class="ky-modal-note">
-          デザインとサイズをご確認のうえ<br />
-          RSVPフォームにご記入ください
-        </p>
-      </div>
-    </div>
 
     <script>
       (function () {

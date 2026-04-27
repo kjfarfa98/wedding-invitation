@@ -362,7 +362,7 @@
         display: flex;
         align-items: baseline;
         gap: 20px;
-        padding: 13px 0;
+        padding: 9px 0;
       }
       .info-row + .info-row {
         border-top: 1px solid var(--foam);
@@ -572,6 +572,54 @@
         color: var(--ocean);
         text-align: center;
         margin-bottom: 28px;
+      }
+      /* ─── CHANGELOG MODAL ─── */
+      .changelog-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .changelog-entry {
+        display: grid;
+        grid-template-columns: 7em 1fr;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--foam);
+        align-items: baseline;
+      }
+      .changelog-entry:first-child {
+        border-top: 1px solid var(--foam);
+      }
+      .changelog-date {
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        color: var(--text-light);
+        white-space: nowrap;
+      }
+      .changelog-content {
+        font-size: 0.84rem;
+        color: var(--text-dark);
+        line-height: 1.7;
+      }
+      /* ─── PAGE FOOTER ─── */
+      .page-footer {
+        text-align: center;
+        padding: 32px 0 48px;
+        background: var(--deep-ocean);
+      }
+      .btn-changelog {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "Noto Serif JP", serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.4);
+        padding: 6px 0;
+      }
+      .btn-changelog:hover {
+        color: rgba(255,255,255,0.7);
       }
       .modal-cards {
         display: grid;
@@ -1158,12 +1206,7 @@
             <span class="info-label">電話番号</span>
             <span class="info-value">0980-79-6541</span>
           </div>
-          <div class="info-row">
-            <span class="info-label">服装</span>
-            <span class="info-value"
-              >かりゆしウェア を想定<br/>（詳細は追ってご連絡いたします）</span
-            >
-          </div>
+
           <div class="info-frame bottom"></div>
           <p class="info-tentative-note">
             ※ 日程・服装等の情報は現時点のものです<br />
@@ -1307,6 +1350,27 @@
       </div>
     </div>
 
+    <!-- Changelog modal -->
+    <div
+      id="changelog-modal"
+      class="modal-overlay"
+      onclick="if (event.target === this) this.style.display = 'none';"
+    >
+      <div class="modal-box">
+        <button
+          class="modal-close"
+          onclick="document.getElementById('changelog-modal').style.display = 'none'"
+        >✕</button>
+        <p class="modal-title">変更履歴</p>
+        <ul class="changelog-list">
+          <li class="changelog-entry">
+            <span class="changelog-date">2026-05-01</span>
+            <span class="changelog-content">招待状ページを公開</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <!-- Wave divider -->
     <div class="wave-sep" style="background: #e8f6fb">
       <svg
@@ -1350,6 +1414,14 @@
         </div>
       </div>
     </section>
+
+    <!-- Page footer -->
+    <footer class="page-footer">
+      <button
+        class="btn-changelog"
+        onclick="document.getElementById('changelog-modal').style.display = 'flex'"
+      >変更履歴</button>
+    </footer>
 
     <script>
       (function () {
